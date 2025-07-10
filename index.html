@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formular de Înregistrare</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #eef2f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .mesaj {
+      margin-top: 15px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Înregistrează-te</h2>
+    <form onsubmit="inregistreaza(event)">
+      <input type="text" id="nume" placeholder="Nume complet" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="parola" placeholder="Parolă" required>
+      <button type="submit">Trimite</button>
+    </form>
+    <div id="mesaj" class="mesaj"></div>
+  </div>
+
+  <script>
+    function inregistreaza(event) {
+      event.preventDefault(); // Nu trimite formularul
+
+      let nume = document.getElementById("nume").value;
+      let email = document.getElementById("email").value;
+      let parola = document.getElementById("parola").value;
+
+      if (parola.length < 6) {
+        document.getElementById("mesaj").innerText = "Parola trebuie să aibă cel puțin 6 caractere.";
+        return;
+      }
+
+      document.getElementById("mesaj").innerText =
+        "Bun venit, " + nume + "! Ai fost înregistrat cu adresa: " + email;
+    }
+  </script>
+
+</body>
+</html>
